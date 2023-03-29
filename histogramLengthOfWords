@@ -1,0 +1,33 @@
+/* Write a program to print the histogram of the length of words of the lengths of words of its input */
+
+#include <stdio.h>
+#define MAX_LENGTH 20
+
+    main() {
+        int i, count, c;
+        int chars[MAX_LENGTH];
+        count = 0;
+
+        // Initializing chars array
+        for (i = 1; i < MAX_LENGTH; i++) {
+            chars[i] = 0;
+
+        while ( (c = getchar()) != EOF) {
+            if (c != ' ' && c != '\t' && c != '\n')
+                ++count;
+            else if (count > 0 && count < MAX_LENGTH) {
+                ++chars[count];
+                count = 0;
+            }
+        }
+
+        printf ("Number of chars in words\n);
+        for (i = 1; i < MAX_LENGTH; i++) {
+            printf("%2d %4d", i, chars[i]);
+            while (chars[i] > 0) {
+                printf("|");
+                --chars[i];
+            }
+        printf("\n");
+        }
+    }
